@@ -1,52 +1,69 @@
 "use client";
 
-import { useState } from "react";
+import { useTranslation } from "./LanguageProvider";
 
 const ContactSection = () => {
-  const [email, setEmail] = useState("");
+  const t = useTranslation();
+  const { contactSection } = t;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // sementara hanya dummy, nanti bisa dihubungkan ke API / email service
-    setEmail("");
-  };
+  const whatsappHref = `https://wa.me/6281234567890?text=${encodeURIComponent(contactSection.message)}`;
 
   return (
-    <section className="py-20 bg-white text-primary" id="contact">
-      <div className="container mx-auto px-4">
-        <div className="max-w-xl mx-auto text-center">
-          {/* Judul */}
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-primary mb-4">
-            Kontak Kami
-          </h2>
-
-          {/* Teks penjelasan */}
-          <p className="text-secondary leading-relaxed mb-8">
-            Untuk informasi lebih lanjut mengenai layanan dan kerja sama,
-            silakan tinggalkan alamat email Anda. Tim kami akan menghubungi Anda
-            secepatnya.
-          </p>
-
-          {/* Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <input
-              type="email"
-              required
-              placeholder="Alamat email Anda"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-5 py-4 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-            />
-            <button
-              type="submit"
-              className="px-8 py-4 bg-primary text-white font-bold uppercase rounded-lg hover:bg-accent transition-colors duration-200"
+    <section className="section bg-background-dark overflow-hidden">
+      <div className="container-custom">
+        <div
+          className="
+            max-w-3xl mx-auto bg-card rounded-[32px] shadow-2xl p-8 md:p-10
+          "
+        >
+          {/* Title */}
+          <div className="text-center mb-8">
+            <h2
+              className="
+                text-primary font-black mb-3
+                text-[34px] md:text-[44px]
+              "
             >
-              Kirim
-            </button>
-          </form>
+              {contactSection.title}
+            </h2>
+
+            <p className="text-foreground text-base md:text-lg">
+              {contactSection.desc}
+            </p>
+          </div>
+
+          {/* WhatsApp box */}
+          <div className="flex flex-col md:flex-row gap-4">
+
+            {/* Pre-filled message preview */}
+            <div
+              className="
+                flex-1 h-14 flex items-center px-5
+                rounded-2xl border border-border bg-background
+                text-secondary font-medium
+              "
+            >
+              {contactSection.message}
+            </div>
+
+            {/* WhatsApp button */}
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                h-14 px-7 rounded-2xl
+                bg-primary hover:bg-primary-light
+                text-white font-semibold
+                transition-all duration-300
+                flex items-center justify-center gap-3
+                whitespace-nowrap
+              "
+            >
+              <span className="text-xl" aria-hidden="true">💬</span>
+              {contactSection.button}
+            </a>
+          </div>
         </div>
       </div>
     </section>

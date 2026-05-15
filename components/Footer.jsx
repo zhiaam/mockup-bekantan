@@ -1,97 +1,115 @@
 "use client";
 
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+  FaWhatsapp,
+} from "react-icons/fa";
+
+import { useTranslation } from "@/components/LanguageProvider";
+
+/** Social media links — icon and destination URL. */
+const SOCIAL_LINKS = [
+  { icon: <FaFacebookF />, url: "https://facebook.com", label: "Facebook" },
+  { icon: <FaInstagram />, url: "https://instagram.com", label: "Instagram" },
+  { icon: <FaYoutube />, url: "https://youtube.com", label: "YouTube" },
+  { icon: <FaWhatsapp />, url: "https://wa.me/6281234567890", label: "WhatsApp" },
+];
 
 const Footer = () => {
+  const t = useTranslation();
+  const f = t.footer;
+
   return (
-    <footer className="bg-gradient-to-b from-primary to-[#5a0000] text-white py-16">
-      <div className="container mx-auto px-4">
+    <footer aria-label="Site footer" className="bg-secondary text-white pt-16 pb-8 overflow-hidden">
+      <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-          
-          {/* KIRI: Kontak & Sosial Media */}
+
+          {/* Column 1 — Brand + Social */}
           <div>
-            <h4 className="text-xl font-bold mb-4 uppercase tracking-wide text-white">
-              Kontak
+            <h4 className="text-2xl text-white font-bold mb-5 uppercase tracking-wide">
+              Pulau Kembang
             </h4>
+
             <p className="text-white/80 leading-relaxed mb-6">
-              PT. Benny Group berkomitmen membangun hubungan jangka panjang melalui
-              komunikasi terbuka dan profesional.
+              {f.tagline}
             </p>
-            <div className="flex gap-4">
-              {[
-                { icon: <FaFacebookF />, url: "https://facebook.com" },
-                { icon: <FaInstagram />, url: "https://instagram.com" },
-                { icon: <FaLinkedinIn />, url: "https://linkedin.com" },
-              ].map((item, i) => (
+
+            <div className="flex gap-4" aria-label="Social media links">
+              {SOCIAL_LINKS.map(({ icon, url, label }) => (
                 <a
-                  key={i}
-                  href={item.url}
+                  key={label}
+                  href={url}
                   target="_blank"
-                  className="w-10 h-10 flex items-center justify-center rounded-full 
-                  border border-white/40 text-white
-                  hover:bg-accent hover:scale-110 
-                  transition-all duration-300"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="
+                    w-11 h-11 flex items-center justify-center
+                    rounded-full border border-white/30 text-white
+                    hover:bg-secondary-light hover:scale-110
+                    transition-all duration-300
+                  "
                 >
-                  {item.icon}
+                  {icon}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* TENGAH: Informasi Kontak */}
+          {/* Column 2 — Contact info */}
           <div>
-            <h4 className="text-xl font-bold mb-4 uppercase tracking-wide text-white">
-              Informasi
+            <h4 className="text-2xl text-white font-bold mb-5 uppercase tracking-wide">
+              {f.infoTitle}
             </h4>
-            <ul className="space-y-3 text-white/80 text-sm">
-              <li>Email: info@bennygroup.co.id</li>
-              <li>Telepon: +62 21 1234 5678</li>
-              <li>Fax: +62 21 1234 5679</li>
-              <li>Alamat: Jl. Contoh Raya No. 123, Jakarta, Indonesia</li>
+
+            <ul className="space-y-4 text-white/80 leading-relaxed">
+              <li>Email: template@gmail.com</li>
+              <li>{f.phone}: +62 xxx xxxx</li>
+              <li>{f.location}</li>
+              <li>{f.hours}</li>
             </ul>
           </div>
 
-          {/* KANAN: Form Berlangganan */}
+          {/* Column 3 — Newsletter */}
           <div>
-            <h4 className="text-xl font-bold mb-4 uppercase tracking-wide text-white">
-              Berlangganan
+            <h4 className="text-2xl text-white font-bold mb-5 uppercase tracking-wide">
+              {f.newsletterTitle}
             </h4>
-            <p className="text-white/80 text-sm mb-6">
-              Dapatkan informasi terbaru seputar layanan dan perkembangan
-              Benny Group.
+
+            <p className="text-white/80 mb-6 leading-relaxed">
+              {f.newsletterDesc}
             </p>
 
-            {/* Glow wrapper */}
-            <div className="relative p-1 rounded-lg group">
-              <div className="absolute inset-0 rounded-lg bg-white/10 opacity-0 group-hover:opacity-100 blur transition-all duration-500"></div>
-
-              <form className="relative flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  placeholder="Alamat email Anda"
-                  className="flex-1 px-4 py-3 bg-transparent border border-white/25 
-                  text-white placeholder-white/60 rounded-md 
-                  focus:outline-none focus:border-white 
-                  transition-all duration-300"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 border border-white/25 text-white font-semibold rounded-md
-                  hover:bg-white hover:text-primary 
+            <form className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder={f.emailPlaceholder}
+                className="
+                  flex-1 h-12 px-4 rounded-xl
+                  bg-transparent border border-white/25
+                  text-white placeholder-white/50 outline-none
+                  focus:border-white transition-all
+                "
+              />
+              <button
+                type="submit"
+                className="
+                  h-12 px-6 rounded-xl
+                  bg-transparent border border-white text-white font-semibold
                   transition-all duration-300
-                  shadow-[0_0_0_rgba(255,255,255,0)] 
-                  hover:shadow-[0_0_20px_rgba(255,255,255,0.4)]"
-                >
-                  Kirim
-                </button>
-              </form>
-            </div>
+                  hover:shadow-[0_0_18px_rgba(255,255,255,0.55)] hover:bg-white/10
+                "
+              >
+                {f.send}
+              </button>
+            </form>
           </div>
         </div>
 
-        {/* Footer bottom */}
-        <div className="border-t border-white/20 mt-14 pt-6 text-center text-white/60 text-sm">
-          © {new Date().getFullYear()} PT. Benny Group. Seluruh hak cipta dilindungi.
+        {/* Bottom bar */}
+        <div className="border-t border-white/15 mt-14 pt-6 text-center text-white/60 text-sm">
+          © {new Date().getFullYear()} Template {f.copyright}
         </div>
       </div>
     </footer>

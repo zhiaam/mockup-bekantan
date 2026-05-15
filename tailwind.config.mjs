@@ -23,16 +23,29 @@ export default {
     },
     extend: {
       colors: {
-        primary: "#800000", // maroon
-        secondary: "#555555", // abu lembut untuk teks sekunder
-        accent: "#DC143C", // crimson
-        border: "#d7d7d7",
+        background: "#f5f1e8",
+        "background-dark": "#ebe3d6",
+        foreground: "#2b2b2b",
+
+        primary: "#355e3b",
+        "primary-light": "#4f7a55",
+
+        secondary: "#6b4f3a",
+        "secondary-light": "#8a6a4e",
+
+        accent: "#a3b18a",
+
+        card: "#fffaf3",
+
+        border: "#d8cbb8",
       },
+
       boxShadow: {
-        custom: "0px 4px 54px 10px rgba(128, 0, 0, 0.06)",
+        custom: "0px 4px 54px 10px rgba(53, 94, 59, 0.08)",
       },
+
       backgroundImage: {
-        hero: "url('/assets/img/hero/bg.jpg')",
+        hero: "url('/assets/hero.jpg')",
       },
     },
   },

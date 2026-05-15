@@ -1,18 +1,39 @@
 import { DM_Sans, Barlow } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import "./globals.css";
 
 const dmSans = DM_Sans({
   variable: "--font-dmSans",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: [
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900",
+  ],
 });
 
 const barlow = Barlow({
   variable: "--font-barlow",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: [
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900",
+  ],
 });
 
 /* =========================
@@ -20,78 +41,120 @@ const barlow = Barlow({
 ========================= */
 export const metadata = {
   title: {
-    default: "PT. Benny Group",
-    template: "%s | PT. Benny Group",
+    default: "Pulau Bekantan Kalimantan",
+    template: "%s | Pulau Bekantan Kalimantan",
   },
+
   description:
-    "PT. Benny Group adalah grup perusahaan Indonesia yang bergerak di berbagai sektor usaha dengan komitmen profesionalisme dan keberlanjutan.",
+    "Website informasi dan wisata Pulau Bekantan Kalimantan Selatan yang menghadirkan sejarah, galeri, wisata alam, dan informasi kunjungan.",
+
   keywords: [
-    "PT Benny Group",
-    "Benny Group",
-    "Perusahaan Indonesia",
-    "Holding Company",
-    "Jasa Profesional",
+    "Pulau Bekantan",
+    "Bekantan Kalimantan",
+    "Wisata Kalimantan",
+    "Wisata Banjarmasin",
+    "Wisata Alam Kalimantan Selatan",
+    "Bekantan",
+    "Wisata Sungai",
+    "Hutan Mangrove",
   ],
-  authors: [{ name: "PT. Benny Group" }],
-  creator: "PT. Benny Group",
-  metadataBase: new URL("https://bennygroup.co.id"),
+
+  authors: [{ name: "Pulau Bekantan Kalimantan" }],
+
+  creator: "Pulau Bekantan Kalimantan",
+
+  metadataBase: new URL("https://pulaubekantan.com"),
 
   openGraph: {
-    title: "PT. Benny Group",
+    title: "Pulau Bekantan Kalimantan",
+
     description:
-      "Grup perusahaan Indonesia dengan beragam lini usaha dan komitmen profesional.",
-    url: "https://bennygroup.co.id",
-    siteName: "PT. Benny Group",
+      "Jelajahi wisata alam khas Kalimantan melalui Pulau Bekantan dengan panorama sungai, hutan mangrove, dan habitat bekantan.",
+
+    url: "https://pulaubekantan.com",
+
+    siteName: "Pulau Bekantan Kalimantan",
+
     images: [
       {
-        url: "/assets/og-image.png",
+        url: "/assets/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "PT. Benny Group",
+        alt: "Pulau Bekantan Kalimantan",
       },
     ],
+
     locale: "id_ID",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "PT. Benny Group",
+
+    title: "Pulau Bekantan Kalimantan",
+
     description:
-      "Grup perusahaan Indonesia dengan beragam lini usaha dan komitmen profesional.",
-    images: ["/assets/og-image.png"],
+      "Wisata alam khas Kalimantan dengan panorama sungai dan habitat bekantan.",
+
+    images: ["/assets/og-image.jpg"],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body className={`${dmSans.variable} ${barlow.variable} antialiased`}>
-        <Header />
-        {children}
-        <Footer />
+      <body
+        className={`
+          ${dmSans.variable}
+          ${barlow.variable}
+          antialiased
+        `}
+      >
+        <LanguageProvider>
+          <Header />
 
-        {/* Structured Data (JSON-LD) */}
+          {children}
+
+          <Footer />
+        </LanguageProvider>
+
+        {/* STRUCTURED DATA */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "PT. Benny Group",
-              url: "https://bennygroup.co.id",
-              logo: "https://bennygroup.co.id/assets/logo.png",
+
+              "@type": "TouristDestination",
+
+              name: "Pulau Bekantan Kalimantan",
+
+              description:
+                "Destinasi wisata alam khas Kalimantan Selatan dengan habitat bekantan, wisata sungai, dan panorama alam.",
+
+              url: "https://pulaubekantan.com",
+
+              image:
+                "https://pulaubekantan.com/assets/og-image.jpg",
+
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Banjarmasin",
+                addressRegion: "Kalimantan Selatan",
+                addressCountry: "ID",
+              },
+
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "-3.3186",
+                longitude: "114.5944",
+              },
+
               sameAs: [
                 "https://facebook.com",
                 "https://instagram.com",
-                "https://linkedin.com",
+                "https://youtube.com",
               ],
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Jl. Contoh Raya No. 123",
-                addressLocality: "Jakarta",
-                addressCountry: "ID",
-              },
             }),
           }}
         />
