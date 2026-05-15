@@ -13,7 +13,7 @@ const SectionTwo = () => {
           {/* Image */}
           <div className="relative order-2 xl:order-1">
             <img
-              src="/assets/section2.GIF"
+              src="/assets/section2.gif"
               alt="Wisata Pulau Kembang"
               className="
                 w-full h-[420px] xl:h-[500px]

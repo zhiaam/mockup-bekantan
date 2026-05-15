@@ -4,12 +4,12 @@ import { useTranslation } from "@/components/LanguageProvider";
 
 /** Image paths for gallery items — order matches translation items array. */
 const GALLERY_IMAGES = [
-  "/assets/gallery1.PNG",
-  "/assets/gallery2.PNG",
-  "/assets/gallery3.PNG",
-  "/assets/gallery4.PNG",
-  "/assets/gallery5.PNG",
-  "/assets/gallery6.PNG",
+  "/assets/gallery1.png",
+  "/assets/gallery2.png",
+  "/assets/gallery3.png",
+  "/assets/gallery4.png",
+  "/assets/gallery5.png",
+  "/assets/gallery6.png",
 ];
 
 export default function GalleryPage() {

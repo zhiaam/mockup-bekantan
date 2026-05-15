@@ -11,7 +11,7 @@ const HeroSection = () => {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="/assets/hero.GIF"
+          src="/assets/hero.gif"
           alt="Panorama Pulau Kembang"
           className="w-full h-full object-cover"
         />

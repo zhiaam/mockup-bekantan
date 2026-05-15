@@ -13,7 +13,7 @@ const SectionThree = () => {
           {/* Image */}
           <div className="relative">
             <img
-              src="/assets/section3.GIF"
+              src="/assets/section3.gif"
               alt="Panorama Pulau Kembang"
               className="
                 w-full h-[320px] md:h-[420px] xl:h-[520px]

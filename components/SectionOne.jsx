@@ -29,7 +29,7 @@ const SectionOne = () => {
           {/* Image */}
           <div className="relative">
             <img
-              src="/assets/section1.GIF"
+              src="/assets/section1.gif"
               alt="Pulau Kembang"
               className="
                 w-full h-[420px] xl:h-[500px]
